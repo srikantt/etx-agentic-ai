@@ -2,9 +2,9 @@
 apiVersion: policy.open-cluster-management.io/v1
 kind: PolicyGenerator
 metadata:
-  name: llama-stack
+  name: mcp-openshift
 placementBindingDefaults:
-  name: llama-stack
+  name: mcp-openshift
 policyDefaults:
   placement:
     placementName: placement-hub-openshift
@@ -19,13 +19,11 @@ policyDefaults:
   namespace: openshift-policy
   pruneObjectBehavior: "None"
   remediationAction: enforce
-  recreateOption: IfRequired
   severity: medium
   standards:
     - NIST SP 800-53
-  policyAnnotations: {"argocd.argoproj.io/compare-options": "IgnoreExtraneous",
-                      "avp.kubernetes.io/path": "kv/data/ocp/sno/openshift-policy/llama-stack"}
+  policyAnnotations: {"argocd.argoproj.io/compare-options": "IgnoreExtraneous"}
 policies:
-  - name: llama-stack-sno
+  - name: mcp-openshift-sno
     manifests:
-      - path: mcp-openshift/
+      - path: sno/
